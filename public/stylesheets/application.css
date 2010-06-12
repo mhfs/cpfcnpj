@@ -1,0 +1,41 @@
+div#header h1 a{color: #000; text-decoration: none;}
+
+div#footer{text-align: right; margin-top: 20px; margin-bottom: 20px;}
+
+/* User nav */
+div#usernav{float: right;}
+div#usernav ul{
+  padding:0px;
+  margin:0px;
+  float: left;
+  width: 100%;
+  list-style:none;
+}
+div#usernav ul li{display: inline;}
+div#usernav ul li a{
+  padding: 2px 10px;
+  float:left;
+  color: #333;
+  text-decoration: none;
+  border-bottom:3px solid #EDEDED;
+}
+div#usernav ul li a:hover{
+  background-color:#EDEDED;
+  color: #6D6D6D;
+  border-bottom:3px solid #ABABAB;
+}
+
+/* Welcome#index */
+div.entity{
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+div.even{
+  background-color: #EEE;
+}
+div.odd{
+  background-color: #DFDFDF;
+}
+div.clippy{float: right; display: none;}
