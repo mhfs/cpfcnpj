@@ -1,4 +1,8 @@
-div#header h1 a{color: #000; text-decoration: none;}
+div#header h1 a{
+  color: #000;
+  text-decoration: none;
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Verdana, sans-serif;
+}
 
 div#footer{text-align: right; margin-top: 20px; margin-bottom: 20px;}
 
