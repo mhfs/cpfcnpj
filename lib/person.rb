@@ -3,7 +3,7 @@ class Person < Entity
   def valid?
     clean = document.gsub(/[a-zA-Z\.\(\)\/\-|\s]/,'')
     return false unless clean.length == 11
-    digits = clean[0..8].split('').collect(&:to_i)
+    digits = clean[0..8].split('').collect { |d| d.to_i }
     2.times { digits << verification_digit_for(digits) }
     format_number(document) == format_number(digits)
   end
