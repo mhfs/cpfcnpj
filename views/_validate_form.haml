@@ -1,6 +1,6 @@
 %h3.caps Validador
-#validate_response
-%form#validate
+#validate_response= @result
+%form#validate{:action => '/validate', :method => :post}
   %input#document{:name => 'document', :type => :text }
   %input{:type => :submit, :value => "Vai!"}
 

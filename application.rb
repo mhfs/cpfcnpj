@@ -4,11 +4,6 @@ require 'sinatra'
 require 'haml'
 require 'faker'
 
-# Brazillian Rails requires
-require 'lib/br_rails/cpf_cnpj'
-require 'lib/br_rails/cpf'
-require 'lib/br_rails/cnpj'
-
 # App requires
 require 'lib/helpers'
 require 'lib/entity'
@@ -34,9 +29,9 @@ post '/validate' do
   if params[:document].empty?
     @result = {:status => :notice, :message => "Informe o CPF ou CNPJ."}
   else
-    @result = if Cpf.new(params[:document]).valido?
+    @result = if Person.new(params[:document]).valid?
       {:status => :success, :message => "CPF Válido."}
-    elsif Cnpj.new(params[:document]).valido?
+    elsif Company.new(params[:document]).valid?
       {:status => :success, :message => "CNPJ Válido."}
     else
       {:status => :error, :message => "Documento inválido."}

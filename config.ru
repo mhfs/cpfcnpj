@@ -8,6 +8,6 @@ rescue LoadError
   Bundler.setup
 end
 
-require 'cpfcnpj'
+require 'application'
 
 run Sinatra::Application

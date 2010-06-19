@@ -1,5 +1,13 @@
 class Person < Entity
 
+  def valid?
+    clean = document.gsub(/[a-zA-Z\.\(\)\/\-|\s]/,'')
+    return false unless clean.length == 11
+    digits = clean[0..8].split('').collect(&:to_i)
+    2.times { digits << verification_digit_for(digits) }
+    format_number(document) == format_number(digits)
+  end
+
   private
 
     def generate_document
@@ -10,27 +18,27 @@ class Person < Entity
       Faker::Name.name
     end
 
-    # TODO Make it decent
     def generate_cpf
-      n1 = rand(9)
-      n2 = rand(9)
-      n3 = rand(9)
-      n4 = rand(9)
-      n5 = rand(9)
-      n6 = rand(9)
-      n7 = rand(9)
-      n8 = rand(9)
-      n9 = rand(9)
+      digits = []
+      9.times { digits << rand(9) }
 
-      d1 = n9*2 + n8*3 + n7*4 + n6*5 + n5*6 + n4*7 + n3*8 + n2*9 + n1*10
-      d1 = 11 - d1 % 11
-      d1 = 0 if d1 >= 10
+      2.times { digits << verification_digit_for(digits) }
+      format_number(digits)
+    end
 
-      d2 = d1*2 + n9*3 + n8*4 + n7*5 + n6*6 + n5*7 + n4*8 + n3*9 + n2*10 + n1*11
-      d2 = 11 - d2 % 11
-      d2 = 0 if d2 >= 10
+    def verification_digit_for(known_digits)
+      i = 1
+      sums = known_digits.reverse.collect do |d|
+        i += 1
+        d * i
+      end
+      vd = 11 - sums.inject(0){|sum,item| sum + item} % 11
+      vd < 10 ? vd : 0
+    end
 
-      "#{n1}#{n2}#{n3}.#{n4}#{n5}#{n6}.#{n7}#{n8}#{n9}-#{d1}#{d2}"
+    def format_number(array)
+      array.to_s =~ /(\d{3})\.?(\d{3})\.?(\d{3})-?(\d{2})/
+      "#{$1}.#{$2}.#{$3}-#{$4}"
     end
 
 end
