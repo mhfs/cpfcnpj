@@ -1,7 +1,13 @@
 !!! 5
-%html
+%html{:lang => 'pt'}
   %head
-    %title Gerador de CPF/CNPJ
+    %title Gerador e Validador Online de CPF e CNPJ
+
+    %meta{:charset => 'UTF-8'}
+    %meta{:description => 'Geração online de CPF e CNPJ para teste de aplicações. Cria também nomes fictícios de pessoas e empresas.'}
+    %meta{:keywords => 'cpf, cnpj, gerador, geração, validador, validação, testes, desenvolvimento'}
+    %meta{:author => 'Marcelo Silveira'}
+
     = javascript_include_tag "jquery-1.4.2.min.js", "application.js"
     = stylesheet_link_tag 'blueprint/screen.css', "blueprint/plugins/fancy-type/screen.css", "application.css"
     <!--[if lt IE 8]>
