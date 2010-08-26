@@ -6,9 +6,15 @@ APP_ROOT = "/home/www/cpfcnpj.mhfs.com.br/current"
 # The root directory of you app
 working_directory APP_ROOT
 
-# Port that worker processes listen on
-# This can also be a unix socket
-listen 15010, :tcp_nopush => true
+# Load rails+github.git into the master before forking workers
+# for super-fast worker spawn times
+preload_app true
+
+# Restart any workers that haven't responded in 30 seconds
+timeout 30
+
+# Listen on a Unix data socket
+listen "#{APP_ROOT}/tmp/sockets/unicorn.sock", :backlog => 2048
 
 # Location of master process PID file
 pid "#{APP_ROOT}/tmp/pids/unicorn-master.pid"
@@ -17,8 +23,7 @@ pid "#{APP_ROOT}/tmp/pids/unicorn-master.pid"
 stderr_path "#{APP_ROOT}/log/unicorn.stderr.log"
 stdout_path "#{APP_ROOT}/log/unicorn.stdout.log"
 
-# combine REE with "preload_app true" for memory savings
-# http://rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
-preload_app true
-GC.respond_to?(:copy_on_write_friendly=) and
-GC.copy_on_write_friendly = true
+# http://www.rubyenterpriseedition.com/faq.html#adapt_apps_for_cow
+if GC.respond_to?(:copy_on_write_friendly=)
+  GC.copy_on_write_friendly = true
+end
