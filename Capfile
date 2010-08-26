@@ -26,8 +26,14 @@ set :use_sudo, false
 server domain, :app, :web
 
 namespace :deploy do
+  task :start do
+    sudo "/etc/init.d/unicorn start"
+  end
+  task :stop do
+    sudo "/etc/init.d/unicorn stop"
+  end
   task :restart do
-    run "sudo /etc/init.d/cpfcnpj upgrade"
+    sudo "/etc/init.d/cpfcnpj upgrade"
   end
   task :symlink_tmp do
     run "rm -rf #{release_path}/tmp"
