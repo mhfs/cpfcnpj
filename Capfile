@@ -27,6 +27,17 @@ server domain, :app, :web
 
 namespace :deploy do
   task :restart do
-    # run "touch #{current_path}/tmp/restart.txt"
+    run "sudo /etc/init.d/cpfcnpj upgrade"
+  end
+  task :symlink_tmp do
+    run "rm -rf #{release_path}/tmp"
+    run "ln -nfs #{shared_path}/tmp #{release_path}/tmp"
+  end
+  task :setup_tmp do
+    run "mkdir -p #{shared_path}/tmp/sockets"
+    run "mkdir -p #{shared_path}/tmp/pids"
   end
 end
+
+after 'deploy:update_code', 'deploy:symlink_tmp'
+after 'deploy:setup', 'deploy:setup_tmp'
