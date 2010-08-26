@@ -16,7 +16,7 @@ GEM
     json_pure (1.4.6)
     mime-types (1.16)
     nokogiri (1.4.3.1)
-    rack (1.1.0)
+    rack (1.2.1)
     rack-test (0.5.4)
       rack (>= 1.0)
     rake (0.8.7)
@@ -38,7 +38,7 @@ DEPENDENCIES
   capybara
   faker
   haml
-  rack (= 1.1.0)
+  rack (= 1.2.1)
   rack-test
   rspec
   sinatra

@@ -1,6 +1,6 @@
 source 'http://gemcutter.org'
 
-gem 'rack', '1.1.0'
+gem 'rack', '1.2.1'
 gem 'unicorn'
 gem 'sinatra'
 gem 'haml'
