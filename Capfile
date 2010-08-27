@@ -1,21 +1,19 @@
-$:.unshift(File.expand_path('./lib', ENV['rvm_path'])) # Add RVM's lib directory to the load path.
-require "rvm/capistrano"                  # Load RVM's capistrano plugin.
-set :rvm_ruby_string, 'ree-1.8.7-2010.02'        # Or whatever env you want it to run in.
+$:.unshift(File.expand_path('./lib', ENV['rvm_path']))
+require "rvm/capistrano"
+set :rvm_ruby_string, 'ree-1.8.7-2010.02'
 
 require 'bundler/capistrano'
 
-load 'deploy' if respond_to?(:namespace) # cap2 differentiator
+load 'deploy' if respond_to?(:namespace)
 
 default_run_options[:pty] = true
 
-# be sure to change these
-set :user, 'mhfs'
-set :domain, 'server.mhfs.com.br' # TODO update
+set :user, 'cpfcnpj'
 set :application, 'cpfcnpj'
+set :domain, "#{application}.mhfs.com.br"
 
-# the rest should be good
-set :repository,  "git://github.com/mhfs/cpfcnpj.git"
-set :deploy_to, "/home/www/cpfcnpj.mhfs.com.br" # TODO use #{domain}
+set :repository,  "git://github.com/mhfs/#{application}.git"
+set :deploy_to, "/home/www/#{domain}"
 set :deploy_via, :remote_cache
 set :scm, 'git'
 set :branch, 'master'
@@ -27,13 +25,13 @@ server domain, :app, :web
 
 namespace :deploy do
   task :start do
-    sudo "/etc/init.d/unicorn start"
+    run "/etc/init.d/#{application} start"
   end
   task :stop do
-    sudo "/etc/init.d/unicorn stop"
+    run "/etc/init.d/#{application} stop"
   end
   task :restart do
-    sudo "/etc/init.d/cpfcnpj upgrade"
+    run "/etc/init.d/#{application} upgrade"
   end
   task :symlink_tmp do
     run "rm -rf #{release_path}/tmp"
