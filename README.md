@@ -5,7 +5,7 @@ A very simple sinatra app that generates CPF/CNPJ numbers for test purposes. It 
 
 Check out:
 
-[http://cpfcnpj.heroku.com/](http://cpfcnpj.heroku.com/)
+[http://cpfcnpj.mhfs.com.br/](http://cpfcnpj.mhfs.com.br/)
 
 What is CPF/CNPJ?
 -----------------
