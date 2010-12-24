@@ -7,7 +7,7 @@ APP_ROOT = "/home/cpfcnpj.mhfs.com.br/current"
 working_directory APP_ROOT
 
 # The user which the workers will run under
-user 'cpfcnpj', 'cpfcnpj'
+user 'cpfcnpj_mhfs_com_br', 'cpfcnpj_mhfs_com_br'
 
 # Load rails+github.git into the master before forking workers
 # for super-fast worker spawn times
