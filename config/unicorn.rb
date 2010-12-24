@@ -1,7 +1,7 @@
 # Unicorn says to use at least one worker process per core (particularly on dedicated servers)
 worker_processes 1
 
-APP_ROOT = "/home/www/cpfcnpj.mhfs.com.br/current"
+APP_ROOT = "/home/cpfcnpj.mhfs.com.br/current"
 
 # The root directory of you app
 working_directory APP_ROOT
@@ -14,7 +14,7 @@ user 'cpfcnpj', 'cpfcnpj'
 preload_app true
 
 # Restart any workers that haven't responded in 30 seconds
-timeout 30
+timeout 10
 
 # Listen on a Unix data socket
 listen "#{APP_ROOT}/tmp/sockets/unicorn.sock", :backlog => 2048
@@ -30,3 +30,4 @@ stdout_path "#{APP_ROOT}/log/unicorn.stdout.log"
 if GC.respond_to?(:copy_on_write_friendly=)
   GC.copy_on_write_friendly = true
 end
+
