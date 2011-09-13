@@ -42,4 +42,4 @@ div.even{
 div.odd{
   background-color: #DFDFDF;
 }
-div.clippy{float: right; display: none;}
+div.clippy{float: right; visibility: hidden;}

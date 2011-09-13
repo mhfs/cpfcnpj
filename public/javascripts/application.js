@@ -4,10 +4,9 @@ $(document).ready(function() {
 
   // Showing/Hiding clippy icon on mouse hover
   $('div.entity').hover(function() {
-    $(this).children('div.clippy').show();
-  },
-  function() {
-    $(this).children('div.clippy').hide();
+    $(this).children('div.clippy').css("visibility", "visible");
+  }, function() {
+    $(this).children('div.clippy').css("visibility", "hidden");
   });
 
   // Cleaning ajax result on submit and input type
