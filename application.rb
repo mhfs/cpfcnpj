@@ -10,6 +10,8 @@ require 'lib/entity'
 require 'lib/person'
 require 'lib/company'
 
+Faker::Config.locale = "pt-br"
+
 # Set utf-8 for all the outgoing content
 before do
   headers "Content-Type" => "text/html; charset=utf-8"
