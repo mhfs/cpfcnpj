@@ -1,10 +1,10 @@
 class Company < Entity
   def valid?
-    clean = document.gsub(/[a-zA-Z\.\(\)\/\-|\s]/,'')
-    return false unless clean.length == 14
-    digits = clean[0..11].split('').collect { |d| d.to_i }
-    2.times { digits << verification_digit_for(digits) }
-    format_number(document) == format_number(digits)
+    original = document.gsub(/[a-zA-Z\.\(\)\/\-|\s]/,'').split('').map(&:to_i)
+    return false unless original.size == 14
+    new = original[0..11]
+    2.times { new << verification_digit_for(new) }
+    original == new
   end
 
   private
@@ -37,8 +37,7 @@ class Company < Entity
     end
 
     def format_number(array)
-      array = array.join if array.is_a?(Array)
-      array =~ /(\d{2})\.?(\d{3})\.?(\d{3})\/?(\d{4})-?(\d{2})/
+      array.join =~ /(\d{2})\.?(\d{3})\.?(\d{3})\/?(\d{4})-?(\d{2})/
       "#{$1}.#{$2}.#{$3}/#{$4}-#{$5}"
     end
 end
