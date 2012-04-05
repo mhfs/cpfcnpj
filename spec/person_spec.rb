@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Person do
-
   subject { Person.new }
 
   it "should respond to name and document" do
@@ -33,5 +32,4 @@ describe Person do
     Person.new('123456').should_not be_valid
     Person.new('').should_not be_valid
   end
-
 end

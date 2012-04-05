@@ -45,4 +45,3 @@ end
 
 after 'deploy:update_code', 'deploy:symlink_tmp'
 after 'deploy:setup', 'deploy:setup_tmp'
-

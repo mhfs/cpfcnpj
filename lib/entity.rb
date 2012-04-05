@@ -5,5 +5,4 @@ class Entity
     self.document = doc.nil? ? generate_document : doc
     self.name     = generate_name
   end
-
 end

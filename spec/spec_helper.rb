@@ -1,14 +1,16 @@
 require File.join(File.dirname(__FILE__), '..', 'application.rb')
 
-require 'spec'
+require 'rspec'
 require 'rack/test'
 require 'capybara'
-require 'capybara/dsl'
+require 'capybara/rspec'
+require 'capybara/webkit'
 require 'net/http'
+require 'pry'
 
-Spec::Runner.configure do |conf|
+RSpec.configure do |conf|
   conf.include Rack::Test::Methods
-  conf.include Capybara
+  conf.include Capybara::DSL
 end
 
 def app
@@ -17,10 +19,4 @@ end
 
 Capybara.app = app
 Capybara.default_selector = :css
-
-def using_javascript(driver = :selenium)
-  Capybara.current_driver = driver
-  yield
-ensure
-  Capybara.use_default_driver
-end
+Capybara.javascript_driver = :webkit

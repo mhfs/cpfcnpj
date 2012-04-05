@@ -1,5 +1,4 @@
 class Person < Entity
-
   def valid?
     clean = document.gsub(/[a-zA-Z\.\(\)\/\-|\s]/,'')
     return false unless clean.length == 11
@@ -37,8 +36,8 @@ class Person < Entity
     end
 
     def format_number(array)
-      array.to_s =~ /(\d{3})\.?(\d{3})\.?(\d{3})-?(\d{2})/
+      array = array.join if array.is_a?(Array)
+      array =~ /(\d{3})\.?(\d{3})\.?(\d{3})-?(\d{2})/
       "#{$1}.#{$2}.#{$3}-#{$4}"
     end
-
 end

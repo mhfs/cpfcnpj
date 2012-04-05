@@ -1,5 +1,4 @@
 class Company < Entity
-
   def valid?
     clean = document.gsub(/[a-zA-Z\.\(\)\/\-|\s]/,'')
     return false unless clean.length == 14
@@ -38,8 +37,8 @@ class Company < Entity
     end
 
     def format_number(array)
-      array.to_s =~ /(\d{2})\.?(\d{3})\.?(\d{3})\/?(\d{4})-?(\d{2})/
+      array = array.join if array.is_a?(Array)
+      array =~ /(\d{2})\.?(\d{3})\.?(\d{3})\/?(\d{4})-?(\d{2})/
       "#{$1}.#{$2}.#{$3}/#{$4}-#{$5}"
     end
-
 end

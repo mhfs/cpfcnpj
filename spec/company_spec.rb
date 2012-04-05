@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Company do
-
   subject { Company.new }
 
   it "should respond to name and document" do
@@ -33,5 +32,4 @@ describe Company do
     Company.new('123456').should_not be_valid
     Company.new('').should_not be_valid
   end
-
 end

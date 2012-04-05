@@ -1,5 +1,4 @@
 helpers do
-
   def javascript_include_tag(*scripts)
     tags = []
     scripts.each do |script|
@@ -85,5 +84,4 @@ helpers do
     </object>
     EOF
   end
-
 end

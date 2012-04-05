@@ -30,4 +30,3 @@ stdout_path "#{APP_ROOT}/log/unicorn.stdout.log"
 if GC.respond_to?(:copy_on_write_friendly=)
   GC.copy_on_write_friendly = true
 end
-

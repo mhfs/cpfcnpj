@@ -1,3 +1,7 @@
+# encoding: UTF-8
+
+$:.unshift File.dirname(__FILE__)
+
 # Gems requires
 require 'rubygems'
 require 'sinatra'
