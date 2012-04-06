@@ -8,6 +8,8 @@ rescue LoadError
   Bundler.setup
 end
 
+$:.unshift File.dirname(__FILE__)
+
 require 'application'
 
 run Sinatra::Application

@@ -10,6 +10,7 @@ gem 'faker'
 group :development do
   gem 'pry'
   gem 'capistrano'
+  gem 'shotgun'
 end
 
 group :test do
