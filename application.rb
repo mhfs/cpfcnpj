@@ -13,6 +13,9 @@ require 'lib/helpers'
 require 'lib/entity'
 require 'lib/person'
 require 'lib/company'
+require 'lib/document'
+require 'lib/cnpj'
+require 'lib/cpf'
 
 Faker::Config.locale = "pt-br"
 
@@ -35,9 +38,9 @@ post '/validate' do
   if params[:document].empty?
     @result = {:status => :notice, :message => "Informe o CPF ou CNPJ."}
   else
-    @result = if Person.new(params[:document]).valid?
+    @result = if Cpf.new(params[:document]).valid?
       {:status => :success, :message => "CPF Válido."}
-    elsif Company.new(params[:document]).valid?
+    elsif Cnpj.new(params[:document]).valid?
       {:status => :success, :message => "CNPJ Válido."}
     else
       {:status => :error, :message => "Documento inválido."}
