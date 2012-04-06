@@ -8,10 +8,6 @@ helpers do
     tags.join("\n")
   end
 
-  def image_tag(file, options = {})
-    content_tag(:img, "", options.merge(:src => "/images/#{file}"))
-  end
-
   def stylesheet_link_tag(*sheets)
     tags = []
     sheets.each do |sheet|
