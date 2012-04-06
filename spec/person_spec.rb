@@ -12,6 +12,10 @@ describe Person do
     subject.document.should be_instance_of(Cpf)
   end
 
+  it "should have document number" do
+    subject.document_number.should eq(subject.document.to_s)
+  end
+
   it "should generate name" do
     subject.name.should be_instance_of(String)
   end

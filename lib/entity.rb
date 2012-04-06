@@ -7,7 +7,7 @@ class Entity
   end
 
   def document_number
-    document.number
+    document.human_number
   end
 
   private

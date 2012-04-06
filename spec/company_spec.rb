@@ -12,6 +12,10 @@ describe Company do
     subject.document.should be_instance_of(Cnpj)
   end
 
+  it "should have document number" do
+    subject.document_number.should eq(subject.document.to_s)
+  end
+
   it "should generate name" do
     subject.name.should be_instance_of(String)
   end
