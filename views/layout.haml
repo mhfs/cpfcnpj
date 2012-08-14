@@ -9,42 +9,34 @@
     %meta{:author => 'Marcelo Silveira'}
 
     = javascript_include_tag "jquery-1.4.2.min.js", "application.js"
-    = stylesheet_link_tag 'blueprint/screen.css', "blueprint/plugins/fancy-type/screen.css", "application.css"
-    <!--[if lt IE 8]>
-    = stylesheet_link_tag 'blueprint/ie.css'
-    <![endif]-->
+    = stylesheet_link_tag 'bootstrap.min.css', "application.css"
 
   %body
     .container
-      #usernav
-        %ul
-          %li= link_to "Sobre", '/about'
-      #header.span-24.last
-        %h1= link_to 'CPF/CNPJ', '/'
-      #subheader.span-24.last
-        %h3.alt Gerador para teste de aplicações
+      .row
+        .span12
+          %h1
+            = link_to 'CPF/CNPJ', '/'
+            %small Gerador para teste de aplicações
 
       %hr
-      #content.span-18
 
-        = yield
+      .row
+        .span8
+          .row
+            = yield
 
-      #sidebar.span-6.last
-        .box
-          %span.quiet
-            Sem botão gerar.
-            %br
-            Sem marcar texto.
-            %br
-            Sem Ctrl-C.
+        .span4
+          .validate
+            = partial 'validate_form'
 
-        .box
-          = partial 'validate_form'
-      #footer.span-24.last
-        %hr
-        %span.quiet
-          = link_to "Marcelo Silveira", "http://mhfs.com.br/"
-          &copy 2010
-          \|
-          = link_to "Código Fonte", "http://github.com/mhfs/cpfcnpj"
+      .row
+        .span12
+          %hr
+          .pull-right
+            By
+            = link_to "Marcelo Silveira", "http://mhfs.com.br/"
+            \|
+            = link_to "Código Fonte", "http://github.com/mhfs/cpfcnpj"
+
     = partial 'analytics'

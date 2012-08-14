@@ -1,1 +1,1 @@
-%div{:class => @result[:status]}= @result[:message]
+%div{:class => "alert alert-#{@result[:status]}"}= @result[:message]

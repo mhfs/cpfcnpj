@@ -50,34 +50,4 @@ helpers do
   def cycle
     %w{even odd}[@_cycle = ((@_cycle || -1) + 1) % 2]
   end
-
-  def clippy(element_id, bgcolor='#FFFFFF')
-    html = <<-EOF
-    <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
-                  width="110"
-                  height="14"
-                  class="clippy"
-                  id="clippy" >
-          <param name="movie" value="/flash/clippy.swf?v5"/>
-          <param name="allowScriptAccess" value="always" />
-          <param name="quality" value="high" />
-          <param name="scale" value="noscale" />
-          <param NAME="FlashVars" value="id=#{element_id}&amp;copied=&amp;copyto=">
-          <param name="bgcolor" value="#FFFFFF">
-          <param name="wmode" value="opaque">
-          <embed src="/flash/clippy.swf?v5"
-                 width="14"
-                 height="14"
-                 name="clippy"
-                 quality="high"
-                 allowScriptAccess="always"
-                 type="application/x-shockwave-flash"
-                 pluginspage="http://www.macromedia.com/go/getflashplayer"
-                 FlashVars="id=#{element_id}&amp;copied=&amp;copyto="
-                 bgcolor="#FFFFFF"
-                 wmode="opaque"
-          />
-    </object>
-    EOF
-  end
 end

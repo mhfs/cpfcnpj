@@ -20,19 +20,12 @@ describe Sinatra::Application do
     end
   end
 
-  context "About" do
-    it "should show page" do
-      visit '/about'
-      page.should have_css('h2', :text => 'Sobre')
-    end
-  end
-
   context "Document Validation" do
     it "should require a document", :js => true do
       visit '/'
       click_button 'Vai!'
 
-      page.should have_css('div#validate_response div.notice', :text => 'Informe o CPF ou CNPJ.')
+      page.should have_css('div#validate_response div.alert-notice', :text => 'Informe o CPF ou CNPJ.')
     end
 
     it "should complain about invalid document", :js => true do
@@ -40,7 +33,7 @@ describe Sinatra::Application do
       fill_in 'document', :with => '123456'
       click_button 'Vai!'
 
-      page.should have_css('div#validate_response div.error', :text => 'Documento inválido.')
+      page.should have_css('div#validate_response div.alert-error', :text => 'Documento inválido.')
     end
 
     it "should accept valid CNPJ", :js => true do
@@ -48,7 +41,7 @@ describe Sinatra::Application do
       fill_in 'document', :with => '24.221.361/0001-26'
       click_button 'Vai!'
 
-      page.should have_css('div#validate_response div.success', :text => 'CNPJ Válido.')
+      page.should have_css('div#validate_response div.alert-success', :text => 'CNPJ Válido.')
     end
 
     it "should accept valid CPF", :js => true do
@@ -56,7 +49,7 @@ describe Sinatra::Application do
       fill_in 'document', :with => '203.850.773-27'
       click_button 'Vai!'
 
-      page.should have_css('div#validate_response div.success', :text => 'CPF Válido.')
+      page.should have_css('div#validate_response div.alert-success', :text => 'CPF Válido.')
     end
   end
 end

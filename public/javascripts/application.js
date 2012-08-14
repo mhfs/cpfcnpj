@@ -1,12 +1,23 @@
-// Place your application-specific JavaScript functions and classes here
-// This file is automatically included by javascript_include_tag :defaults
-$(document).ready(function() {
+jQuery.fn.selectText = function(){
+    var doc = document;
+    var element = this[0];
+    console.log(this, element);
+    if (doc.body.createTextRange) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(element);
+        range.select();
+    } else if (window.getSelection) {
+        var selection = window.getSelection();
+        var range = document.createRange();
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+};
 
-  // Showing/Hiding clippy icon on mouse hover
-  $('div.entity').hover(function() {
-    $(this).children('div.clippy').css("visibility", "visible");
-  }, function() {
-    $(this).children('div.clippy').css("visibility", "hidden");
+$(function() {
+  $('div.entity span').click(function(){
+    $(this).selectText();
   });
 
   // Cleaning ajax result on submit and input type
@@ -30,5 +41,4 @@ $(document).ready(function() {
     });
     return false;
   });
-
 });

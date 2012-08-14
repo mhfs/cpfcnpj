@@ -1,8 +1,4 @@
 .entity{:class => cycle}
-  .clippy= clippy "name_#{entity.object_id}"
   %span{ :id => "name_#{entity.object_id}" }= entity.name
-
   %br
-
-  .clippy= clippy "doc_#{entity.object_id}"
   %span{ :id => "doc_#{entity.object_id}" }= entity.document_number

@@ -1,6 +1,7 @@
-%h3.caps Validador
+%h4 Validador
 #validate_response= @result
 %form#validate{:action => '/validate', :method => :post}
-  %input#document{:name => 'document', :type => :text }
-  %input{:type => :submit, :value => "Vai!"}
-
+  .input-append
+    %input#document.span3{:name => 'document', :type => :text }
+      %button{:class => :btn}>
+        Vai!
