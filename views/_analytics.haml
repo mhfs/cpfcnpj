@@ -1,13 +1,14 @@
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-2813828-3");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-<script type="text/javascript">
+:javascript
+  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+:javascript
+  try {
+    var pageTracker = _gat._getTracker("UA-2813828-3");
+    pageTracker._trackPageview();
+  } catch(err) {}
+
+:javascript
   var _gauges = _gauges || [];
   (function() {
     var t   = document.createElement('script');
@@ -19,4 +20,3 @@ pageTracker._trackPageview();
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(t, s);
   })();
-</script>
