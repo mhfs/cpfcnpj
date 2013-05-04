@@ -1,13 +1,13 @@
 # Unicorn says to use at least one worker process per core (particularly on dedicated servers)
 worker_processes 1
 
-APP_ROOT = "/home/cpfcnpj.mhfs.com.br/current"
+APP_ROOT = "/home/deployer/apps/cpfcnpj.mhfs.com.br/current"
 
 # The root directory of you app
 working_directory APP_ROOT
 
 # The user which the workers will run under
-user 'cpfcnpj_mhfs_com_br', 'cpfcnpj_mhfs_com_br'
+user 'deployer', 'deployer'
 
 # Load rails+github.git into the master before forking workers
 # for super-fast worker spawn times

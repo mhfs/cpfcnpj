@@ -8,11 +8,11 @@ load 'deploy' if respond_to?(:namespace)
 
 default_run_options[:pty] = true
 
-set :user,              'cpfcnpj_mhfs_com_br'
+set :user,              'deployer'
 set :application,       'cpfcnpj'
 set :domain,            "#{application}.mhfs.com.br"
 set :repository,        "git://github.com/mhfs/#{application}.git"
-set :deploy_to,         "/home/#{domain}"
+set :deploy_to,         "/home/deployer/apps/#{domain}"
 set :deploy_via,        :remote_cache
 set :scm,               'git'
 set :branch,            'master'
