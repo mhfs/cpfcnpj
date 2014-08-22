@@ -48,7 +48,3 @@ post '/validate' do
   end
   haml :validate, :layout => false
 end
-
-get '/about' do
-  haml :about
-end
