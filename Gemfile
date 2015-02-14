@@ -1,5 +1,7 @@
 source 'http://gemcutter.org'
 
+ruby '2.1.2'
+
 gem 'rake'
 gem 'rack', '1.2.1'
 gem 'puma'
