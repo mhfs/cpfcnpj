@@ -2,14 +2,13 @@ source 'http://gemcutter.org'
 
 gem 'rake'
 gem 'rack', '1.2.1'
-gem 'unicorn'
+gem 'puma'
 gem 'sinatra'
 gem 'haml'
 gem 'faker'
 
 group :development do
   gem 'pry'
-  gem 'capistrano'
   gem 'shotgun'
 end
 
